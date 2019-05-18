@@ -5,14 +5,10 @@
         <meta name="description" content="Gallery">
         <meta name="keywords" content="gallery">
         <meta name="viewport" content="width=device-width">
-        <link rel="icon" type="image/png" href="!.png">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="tim.css">
-        <title> Gallery </title>
+        <title> proximity </title>
         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
         <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
         <script src="https://unpkg.com/prismic.io/dist/prismic.io.min.js"></script>
-        <script src="tim.js"></script>
       </head>
 
       <style>
@@ -35,9 +31,7 @@
 
       .marker {
         cursor: pointer;
-        position: absolute;
-        top: 34%;
-        left: 80%;
+        position: absolute !important;
         width: 20px;
         height: 20px;
         border-radius: 50vw;
@@ -46,45 +40,6 @@
         -o-transition: all .4s cubic-bezier(0,.94,.44,1);
         transition: all .4s cubic-bezier(0,.94,.44,1);
 
-      }
-
-      #b {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        left: 3%;
-        width: 20px;
-        height: 20px;
-        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
-        transition: all .4s cubic-bezier(0,.94,.44,1);
-      }
-
-      #c {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        left: 30%;
-        width: 20px;
-        height: 20px;
-        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
-        transition: all .4s cubic-bezier(0,.94,.44,1);
-      }
-
-      #z {
-        cursor: pointer;
-        position: absolute;
-        top: 25%;
-        left: 80%;
-        width: 20px;
-        height: 20px;
-        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
-        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
-        transition: all .4s cubic-bezier(0,.94,.44,1);
       }
 
       .view {
@@ -223,15 +178,6 @@
           height: auto !important;
         }
 
-        #a {
-          left: 80%;
-          top: 47% ;
-        }
-
-        #z {
-          top: 43%;
-        }
-
         .q {
           text-align: left;
           left: 3% !important;
@@ -267,20 +213,22 @@ Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
       for (var i = 0; i < results.length; i++) {
 
         color = results[i].getColor("marker.color");
-        left = results[i].getNumber("marker.number");
-        top = results[i].getNumber("marker.number");
+        tops = results[i].getNumber("marker.top_position");
+        left = results[i].getNumber("marker.left");
         title = results[i].getStructuredText("marker.title").asText();
         u = results[i].getStructuredText("marker.uni").asText();
         desc = results[i].getStructuredText("marker.desc").asHtml();
         image = results[i].getImage("marker.view").asHtml();
 
+        // console.log(top,left);
+
         var tag = $("<div class='walltag'></div>");
         var src = $(image).attr("src");
         console.log(src);
         var view = $("<img class='view'/>").attr("src",src);
-        var marker = $("<div class='marker'/>");
+        var marker = $("<div class='marker'></div>");
         //create and position marker//
-        marker.attr("id", u).css({"top":top+"%","left":left+"%","background-color":color});
+        marker.attr("id", u).css({"top":tops+"vh","left":left+"vw","background-color":color});
         //give each post its unique identifier//
         tag.attr("name",u);
         view.attr("name",u);
