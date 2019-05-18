@@ -1,0 +1,342 @@
+<html>
+
+      <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Gallery">
+        <meta name="keywords" content="gallery">
+        <meta name="viewport" content="width=device-width">
+        <link rel="icon" type="image/png" href="!.png">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="tim.css">
+        <title> Gallery </title>
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+        <script src="https://unpkg.com/prismic.io/dist/prismic.io.min.js"></script>
+        <script src="tim.js"></script>
+      </head>
+
+      <style>
+
+      html {
+        background-color: #e2e2e2;
+        font-family: sans-serif;
+        overflow: hidden;
+      }
+
+      .floor {
+        margin: 0;
+        top: 50%;
+        position: absolute;
+        width: 90%;
+        height: auto;
+        transform:translate(0%,-50%);
+        -webkit-transform:translate(0%,-50%);
+      }
+
+      .marker {
+        cursor: pointer;
+        position: absolute;
+        top: 34%;
+        left: 80%;
+        width: 20px;
+        height: 20px;
+        border-radius: 50vw;
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+
+      }
+
+      #b {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 3%;
+        width: 20px;
+        height: 20px;
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+
+      #c {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        width: 20px;
+        height: 20px;
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+
+      #z {
+        cursor: pointer;
+        position: absolute;
+        top: 25%;
+        left: 80%;
+        width: 20px;
+        height: 20px;
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+
+      .view {
+        position: absolute;
+        display: none;
+        right: 0;
+        height: auto;
+      }
+
+      .aView {
+        display: none;
+        position: absolute;
+        top: 6vh;
+        right: 2vw;
+        width: 15vw;
+        height: auto;
+      }
+
+      .focus {
+        margin: 0;
+        position: absolute;
+        display: inline;
+        right: 2vw;
+        top: 5vh;
+        width: auto;
+        height: 90vh;
+        /*transform:translate(-50%,0%);
+        -webkit-transform:translate(-50%,0%);*/
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+
+      .back {
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 0;
+        margin: 0;
+        display: none;
+        text-align: center;
+        position: absolute;
+        left: 2vw;
+        top: 4.5vh;
+        font-size: 15px;
+        font-family: sans-serif;
+      }
+
+      .big {
+        left: 2vw !important;
+        top: 11vh !important;
+        width: 40px !important;
+        height: 40px !important;
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+      .walltag {
+        display: none;
+        position: absolute;
+        left: 2vw;
+        top: 20vh;
+        width: 14vw;
+      }
+
+      .q {
+        text-align: right;
+        position: absolute;
+        right: 2vw;
+        top: 0;
+        font-size: 15px;
+        width: 5vw;
+      }
+
+      .lPerson {
+        border-radius: 50vw;
+        top: -10vh;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: 5vh;
+        background-color: black;
+      }
+      @media screen and (max-width: 736px){
+        html {
+          overflow: scroll;
+        }
+        body {
+          position: absolute;
+          top: 0%;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+        }
+
+        .floor {
+          width: 100% !important;
+          left: 0%;
+          top: 50%;
+          transform:translate(0%,-50%);
+        -webkit-transform:translate(0%,-50%);
+        }
+
+        .marker {
+
+          margin: 0;
+          transform:translate(50%,50%);
+        -webkit-transform:translate(50%,50%);
+        }
+
+        .big {
+          margin: 0;
+          top:6% !important;
+          left: -2.5% !important;
+          width: 30px !important;
+          height: 30px !important;
+        }
+
+        .back {
+          top: 2%;
+        }
+
+        .walltag {
+          top: 17% !important;
+          position: relative;
+          width: 100% !important;
+        }
+
+        .focus {
+          margin-right: 0;
+          margin-left: 0;
+          margin-top: 65% !important;
+          right: -1% !important;
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        #a {
+          left: 80%;
+          top: 47% ;
+        }
+
+        #z {
+          top: 43%;
+        }
+
+        .q {
+          text-align: left;
+          left: 3% !important;
+          width: 50%;
+          font-size: 20;
+        }
+
+        .aView {
+          top: 2.25%;
+        }
+
+      }
+    </style>
+
+    <script>
+
+      $(document).ready(function(){
+
+
+  
+
+
+Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
+    Api.form("everything")
+    .ref(Api.master())
+    .query(Prismic.Predicates.at("document.type", "marker"))
+    .submit(function (err, response) {
+      var results = response.results;
+      var body = $("body");
+
+
+
+      for (var i = 0; i < results.length; i++) {
+
+        color = results[i].getColor("marker.color");
+        left = results[i].getNumber("marker.number");
+        top = results[i].getNumber("marker.number");
+        title = results[i].getStructuredText("marker.title").asText();
+        u = results[i].getStructuredText("marker.uni").asText();
+        desc = results[i].getStructuredText("marker.desc").asHtml();
+        image = results[i].getImage("marker.view").asHtml();
+
+        var tag = $("<div class='walltag'></div>");
+        var src = $(image).attr("src");
+        console.log(src);
+        var view = $("<img class='view'/>").attr("src",src);
+        var marker = $("<div class='marker'/>");
+        //create and position marker//
+        marker.attr("id", u).css({"top":top+"%","left":left+"%","background-color":color});
+        //give each post its unique identifier//
+        tag.attr("name",u);
+        view.attr("name",u);
+        //append content to elements//
+        tag.append(title,desc);
+        //append everything to the body//
+        body.append(tag,marker,view);
+
+
+      }
+
+      $(".marker").click(function(){
+        $(".marker").not(this).hide();
+        $(".back").show();
+        $(".floor").hide();
+        $(this).addClass("big");
+        var self = $(this).attr("id");
+        $(".walltag[name="+self+"]").show();
+        $(".view[name="+self+"]").addClass("focus");
+      });
+
+      $(".back").click(function(){
+        $(".back,.walltag").hide();
+        $(".view").removeClass("focus");
+        $(".floor,.marker").show();
+        $(".marker").removeClass("big");
+      });
+
+
+
+
+
+  
+
+
+
+
+
+
+    });
+
+});
+
+
+
+  }, "MC5YTjgyeFJBQUFMWEFOSXpR.dGd9Civvv71Ee--_vSrvv70iEw3vv70t77-9Pj9cfu-_vTbvv73vv73vv73vv73vv70sH--_ve-_vQ");
+
+  
+
+    </script>
+
+      <body>
+        <img src="floorplan.svg" class="floor"/>
+        <p class="back">Back to plan view</p>
+        
+      </body>
+
+
+</html>
