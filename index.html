@@ -145,7 +145,6 @@
         }
 
         .marker {
-
           margin: 0;
           transform:translate(50%,50%);
         -webkit-transform:translate(50%,50%);
@@ -195,22 +194,17 @@
     <script>
 
       $(document).ready(function(){
+      	Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
+		Api.form("everything")
+		.ref(Api.master())
+		.query(Prismic.Predicates.at("document.type", "marker"))
+		.submit(function (err, response) {
+		 var results = response.results;
+		 var body = $("body");
 
 
-  
-
-
-Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
-    Api.form("everything")
-    .ref(Api.master())
-    .query(Prismic.Predicates.at("document.type", "marker"))
-    .submit(function (err, response) {
-      var results = response.results;
-      var body = $("body");
-
-
-
-      for (var i = 0; i < results.length; i++) {
+if ($(window).width() > 738) {
+	for (var i = 0; i < results.length; i++) {
 
         color = results[i].getColor("marker.color");
         tops = results[i].getNumber("marker.top_position");
@@ -228,7 +222,7 @@ Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
         var view = $("<img class='view'/>").attr("src",src);
         var marker = $("<div class='marker'></div>");
         //create and position marker//
-        marker.attr("id", u).css({"top":tops+"vh","left":left+"vw","background-color":color});
+        marker.attr("id", u).css({"top":tops+"%","left":left+"%","background-color":color});
         //give each post its unique identifier//
         tag.attr("name",u);
         view.attr("name",u);
@@ -239,6 +233,48 @@ Prismic.Api('https://proximity.prismic.io/api', function (err, Api) {
 
 
       }
+} else {
+
+	for (var i = 0; i < results.length; i++) {
+
+        color = results[i].getColor("marker.color");
+        tops = results[i].getNumber("marker.top_position");
+        left = results[i].getNumber("marker.left");
+        title = results[i].getStructuredText("marker.title").asText();
+        u = results[i].getStructuredText("marker.uni").asText();
+        desc = results[i].getStructuredText("marker.desc").asHtml();
+        image = results[i].getImage("marker.view").asHtml();
+
+        var height = $(window).height()*.0025;
+        var newTop = (tops/height)+22;
+
+        // console.log(top,left);
+
+        var tag = $("<div class='walltag'></div>");
+        var src = $(image).attr("src");
+        console.log(src);
+        var view = $("<img class='view'/>").attr("src",src);
+        var marker = $("<div class='marker'></div>");
+        //create and position marker//
+        marker.attr("id", u).css({"top":newTop+"%","left":left+"%","background-color":color});
+        //give each post its unique identifier//
+        tag.attr("name",u);
+        view.attr("name",u);
+        //append content to elements//
+        tag.append(title,desc);
+        //append everything to the body//
+        body.append(tag,marker,view);
+
+
+      }
+}
+
+
+
+
+
+
+      
 
       $(".marker").click(function(){
         $(".marker").not(this).hide();
