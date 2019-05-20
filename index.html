@@ -250,7 +250,7 @@
         }
 
         .slider > p {
-      	  top: 17% !important;
+      	  top: 25% !important;
           position: relative;
           width: 100% !important;
       }
@@ -300,6 +300,26 @@ if ($(window).width() > 738) {
 
 
       }
+      $(".marker").click(function(){
+        $(".marker").not(this).hide();
+        setTimeout(function(){
+			$(".back").fadeIn(200);
+		},250);
+        $(".floor").hide();
+        $(this).addClass("big");
+        var self = $(this).attr("id");
+        $(".walltag[name="+self+"]").show();
+        $(".view[name="+self+"]").addClass("focus");
+      });
+
+      $(".back").click(function(){
+      	$(".question").removeClass("hi");
+      	$(".slider").removeClass("top");
+        $(".back,.walltag").hide();
+        $(".view").removeClass("focus");
+        $(".floor,.marker").show();
+        $(".marker").removeClass("big");
+      });
 } else {
 
 	for (var i = 0; i < results.length; i++) {
@@ -334,6 +354,27 @@ if ($(window).width() > 738) {
 
 
       }
+      $(".marker").click(function(){
+      	$(".question,.questions").hide();
+        $(".marker").not(this).hide();
+        setTimeout(function(){
+			$(".back").fadeIn(200);
+		},250);
+        $(".floor").hide();
+        $(this).addClass("big");
+        var self = $(this).attr("id");
+        $(".walltag[name="+self+"]").show();
+        $(".view[name="+self+"]").addClass("focus");
+      });
+
+      $(".back").click(function(){
+      	$(".question").show();
+      	$(".slider").removeClass("top");
+        $(".back,.walltag").hide();
+        $(".view").removeClass("focus");
+        $(".floor,.marker").show();
+        $(".marker").removeClass("big");
+      });
 }
 
 
@@ -355,26 +396,7 @@ if ($(window).width() > 738) {
 
       
 
-      $(".marker").click(function(){
-        $(".marker").not(this).hide();
-        setTimeout(function(){
-			$(".back").fadeIn(200);
-		},250);
-        $(".floor").hide();
-        $(this).addClass("big");
-        var self = $(this).attr("id");
-        $(".walltag[name="+self+"]").show();
-        $(".view[name="+self+"]").addClass("focus");
-      });
-
-      $(".back").click(function(){
-      	$(".question").removeClass("hi");
-      	$(".slider").removeClass("top");
-        $(".back,.walltag").hide();
-        $(".view").removeClass("focus");
-        $(".floor,.marker").show();
-        $(".marker").removeClass("big");
-      });
+      
 
 
 
