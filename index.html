@@ -58,7 +58,8 @@
         height: auto;
       }
 
-      .focus {
+      .focus { 
+      	z-index:999 !important;
         margin: 0;
         position: absolute;
         display: inline;
@@ -75,6 +76,7 @@
       }
 
       .back {
+      	z-index: 999 !important;
         text-decoration: underline;
         cursor: pointer;
         margin-left: 0;
@@ -84,7 +86,7 @@
         position: absolute;
         left: 2vw;
         top: 4.5vh;
-        font-size: 15px;
+        font-size: 16px;
         font-family: sans-serif;
       }
 
@@ -102,8 +104,9 @@
         display: none;
         position: absolute;
         left: 2vw;
-        top: 20vh;
+        top: 20%;
         width: 14vw;
+        font-size: 16px;
       }
 
       .q {
@@ -124,6 +127,53 @@
         right: 5vh;
         background-color: black;
       }
+
+      .question,.questions {
+      	z-index: 999 !important;
+      	cursor: pointer;
+      	position: absolute;
+      	top: 50%;
+      	right: 4%;
+      	width: 2.5%;
+      	height: auto;
+      	transform:translate(0%,-50%);
+        -webkit-transform:translate(0%,-50%);
+        -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+      .slider {
+      	position: fixed;
+      	top: -100%;
+      	left: 0;
+      	width: 100%;
+      	height: 100%;
+      	background-color: #c9c9c9;
+      	z-index: 999;
+      	-webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
+        -o-transition: all .4s cubic-bezier(0,.94,.44,1);
+        transition: all .4s cubic-bezier(0,.94,.44,1);
+      }
+
+      .top {
+      	top: 0;
+      }
+
+      .slider > p {
+      	position: relative;
+      	left: 2vw;
+        top: 20%;
+        width: 14vw;
+        font-size: 16px;
+      }
+
+      a,a:visited {
+      	text-decoration: none;
+      	color: #ffe100;
+      }
+
       @media screen and (max-width: 736px){
         html {
           overflow: scroll;
@@ -181,12 +231,29 @@
           text-align: left;
           left: 3% !important;
           width: 50%;
-          font-size: 20;
         }
 
         .aView {
           top: 2.25%;
         }
+
+        .question,.questions {
+        	/*z-index: -99;*/
+        	position: absolute;
+        	top: 10% !important;
+        	left: 50%;
+        	width: 30px;
+        	height: auto;
+        	transform:translate(-50%,0%);
+        -webkit-transform:translate(-50%,0%);
+
+        }
+
+        .slider > p {
+      	  top: 17% !important;
+          position: relative;
+          width: 100% !important;
+      }
 
       }
     </style>
@@ -270,7 +337,19 @@ if ($(window).width() > 738) {
 }
 
 
+		$(".question,.questions").click(function(){
+			$(".slider").toggleClass("top");
 
+			if ($(".questions").hasClass("yes")) {
+				$(".questions").removeClass("yes").hide();
+				$(".question").show();
+			} else {
+				$(".questions").addClass("yes").show();
+				$(".question").hide();
+			}
+			// $(this).toggle();
+			
+		});
 
 
 
@@ -278,7 +357,9 @@ if ($(window).width() > 738) {
 
       $(".marker").click(function(){
         $(".marker").not(this).hide();
-        $(".back").show();
+        setTimeout(function(){
+			$(".back").fadeIn(200);
+		},250);
         $(".floor").hide();
         $(this).addClass("big");
         var self = $(this).attr("id");
@@ -287,6 +368,8 @@ if ($(window).width() > 738) {
       });
 
       $(".back").click(function(){
+      	$(".question").removeClass("hi");
+      	$(".slider").removeClass("top");
         $(".back,.walltag").hide();
         $(".view").removeClass("focus");
         $(".floor,.marker").show();
@@ -317,6 +400,12 @@ if ($(window).width() > 738) {
     </script>
 
       <body>
+      	<div class="slider">
+      	<p>proximity is an online gallery space.<br><br>Our first show will be up on June 7th, 2019.<br><br>
+      		<a href="http://www.instagram.com/proximity.gallery">@proximity.gallery</a></p>
+      	</div>
+      	<img class="question" style="display:inline;" src="quest.svg"/>
+      	<img class="questions" style="display:none;" src="close.svg"/>
         <img src="floorplan.svg" class="floor"/>
         <p class="back">Back to plan view</p>
         
