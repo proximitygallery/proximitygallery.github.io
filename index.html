@@ -217,7 +217,7 @@
         .walltag {
           top: 17% !important;
           position: relative;
-          width: 100% !important;
+          width: 80% !important;
         }
 
         .focus {
@@ -337,6 +337,7 @@ if ($(window).width() > 738) {
 
         var height = $(window).height()*.0025;
         var newTop = (tops/height)+15;
+        var newInstaTop = (tops/height)+20;
 
         // console.log(top,left);
 
@@ -346,7 +347,11 @@ if ($(window).width() > 738) {
         var view = $("<img class='view'/>").attr("src",src);
         var marker = $("<div class='marker'></div>");
         //create and position marker//
-        marker.attr("id", u).css({"top":newTop+"%","left":left+"%","background-color":color});
+        if (window.innerHeight === window.screen.height && navigator.userAgent.match(/instagram/i)) {
+		  marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","background-color":color});
+		} else {
+			marker.attr("id", u).css({"top":newTop+"%","left":left+"%","background-color":color});
+		}
         //give each post its unique identifier//
         tag.attr("name",u);
         view.attr("name",u);
@@ -354,6 +359,7 @@ if ($(window).width() > 738) {
         tag.append(title,desc);
         //append everything to the body//
         body.append(tag,marker,view);
+
 
 
       }
