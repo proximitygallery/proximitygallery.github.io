@@ -251,12 +251,27 @@
 
         }
 
-        .slider > p {
+        .slider > p,.hours {
       	  top: 25% !important;
           position: relative;
-          width: 100% !important;
+          width: 90% !important;
           font-size: 27;
+          left: 6%;
       }
+
+      .hours {
+        top: 41% !important;
+      }
+
+      .blur {
+        -webkit-filter: blur(4px);
+-moz-filter: blur(4px);
+-ms-filter: blur(4px);
+-o-filter: blur(4px);
+filter: blur(4px);
+      }
+
+
 
       }
     </style>
@@ -272,6 +287,12 @@
 		 var results = response.results;
 		 var body = $("body");
 
+// operating hours //
+// start "open" //
+
+var today = new Date().getHours();
+if (today >= 8 && today <= 22) {
+   
 
 if ($(window).width() > 738) {
 	for (var i = 0; i < results.length; i++) {
@@ -360,8 +381,6 @@ if ($(window).width() > 738) {
         //append everything to the body//
         body.append(tag,marker,view);
 
-
-
       }
       $(".marker").click(function(){
       	$(".question,.questions").hide();
@@ -386,39 +405,51 @@ if ($(window).width() > 738) {
       });
 }
 
+$(".question,.questions").click(function(){
+      $(".slider").toggleClass("top");
 
-		$(".question,.questions").click(function(){
-			$(".slider").toggleClass("top");
+      if ($(".questions").hasClass("yes")) {
+        $(".questions").removeClass("yes").hide();
+        $(".question").show();
+      } else {
+        $(".questions").addClass("yes").show();
+        $(".question").hide();
+      }
 
-			if ($(".questions").hasClass("yes")) {
-				$(".questions").removeClass("yes").hide();
-				$(".question").show();
-			} else {
-				$(".questions").addClass("yes").show();
-				$(".question").hide();
-			}
-			// $(this).toggle();
+    });
+
+
+
+// start "closed" //
+
+} else {
+
+    
+$(".question,.questions").click(function(){
+      $(".slider").toggleClass("top");
+
+      if ($(".questions").hasClass("yes")) {
+        $(".questions").removeClass("yes").hide();
+        $(".question").show();
+      } else {
+        $(".questions").addClass("yes").show();
+        $(".question").hide();
+      }
+
+    });
+
+  $(".hours").show();
+  $(".floor").addClass("blur");
+
+
+}
+
+
+		// $(this).toggle();
 			
 		});
 
 
-
-      
-
-      
-
-
-
-
-
-  
-
-
-
-
-
-
-    });
 
 });
 
@@ -431,6 +462,8 @@ if ($(window).width() > 738) {
     </script>
 
       <body>
+      	 <!-- <input type="file" accept="image/*" capture="camera"> -->
+        <div class="hours" style="display:none">proximity is currently closed.<br><br>Hours are 8 AM to 10 PM,<br> 7 days a week.</div>
       	<div class="slider">
       	<p>proximity is an online gallery space.<br><br>Our first show will be up on June 7th, 2019.<br><br>
       		<a href="http://www.instagram.com/proximity.gallery">@proximity.gallery</a></p>
