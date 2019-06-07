@@ -241,9 +241,10 @@
         }
 
         .focus {
+        	position: relative;
           margin-right: 0;
           margin-left: 0;
-          margin-top: 65% !important;
+          margin-top: 35% !important;
           left: 0% !important;
           width: 100% !important;
           height: auto !important;
@@ -311,7 +312,7 @@ filter: blur(4px);
 // start "open" //
 
 var today = new Date().getHours();
-if (today >= 8 && today <= 20) {
+if (today >= 8 && today <= 22) {
    
 
 if ($(window).width() > 738) {
@@ -338,7 +339,7 @@ if ($(window).width() > 738) {
         tag.attr("name",u);
         view.attr("name",u);
         //append content to elements//
-        tag.append(title,desc);
+        tag.append(desc);
         //append everything to the body//
         body.append(tag,marker,view);
 
@@ -376,8 +377,8 @@ if ($(window).width() > 738) {
         desc = results[i].getStructuredText("marker.desc").asHtml();
         image = results[i].getImage("marker.view").asHtml();
 
-        var height = $(window).height()*.0025;
-        var newTop = (tops/height)+15;
+        var height = $(window).height()*.005;
+        var newTop = (tops/height)+35;
         var newInstaTop = (tops/height)+28.5;
 
         // console.log(top,left);
@@ -397,7 +398,7 @@ if ($(window).width() > 738) {
         tag.attr("name",u);
         view.attr("name",u);
         //append content to elements//
-        tag.append(title,desc);
+        tag.append(desc);
         //append everything to the body//
         body.append(tag,marker,view);
 
@@ -485,7 +486,7 @@ $(".question,.questions").click(function(){
       	 <!-- <input type="file" accept="image/*" capture="camera"> -->
         <div class="hours" style="display:none">proximity is currently closed.<br><br>Hours are 8 AM to 10 PM,<br>Monday - Sunday.</div>
       	<div class="slider">
-      	<p>proximity is an online gallery space.<br><br>Our first show will be up on June 7th, 2019.<br><br>
+      	<p>proximity is an online gallery space founded by Tim Zarras.<br><br>
       		<a href="http://www.instagram.com/proximity.gallery">@proximity.gallery</a></p>
       	</div>
       	<img class="question" style="display:inline;" src="quest.svg"/>
