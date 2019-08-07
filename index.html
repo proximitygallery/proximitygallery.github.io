@@ -199,7 +199,23 @@
         filter: blur(4px);
       }
 
+      #g {
+        display: none;
+      }
+
       @media screen and (max-width: 736px){
+        #m {
+          display: none !important;
+        }
+
+        #g {
+          display: inline-block;
+          position: absolute;
+          height: 90%;
+          width: auto;
+          top: 8%;
+        }
+
         html {
           overflow: scroll;
         }
@@ -216,11 +232,12 @@
         }
 
         .floor {
-          width: 100% !important;
-          left: 0%;
-          top: 50%;
-          transform:translate(0%,-50%);
-        -webkit-transform:translate(0%,-50%);
+          top: 10% !important;
+          position: absolute;
+          height: 90%;
+          left: 49%;
+          transform:translate(-50%,0%);
+        -webkit-transform:translate(-50%,0%);
         }
 
         .marker {
@@ -245,6 +262,11 @@
           top: 17% !important;
           position: relative;
           width: 80% !important;
+          color: white;
+        }
+
+        .back {
+          color: white;
         }
 
         .focus {
@@ -399,7 +421,7 @@ if ($(window).width() > 738) {
         if (window.innerHeight === window.screen.height && navigator.userAgent.match(/instagram/i)) {
       marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","background-color":color});
     } else {
-      marker.attr("id", u).css({"top":newTop+"%","left":left+"%","background-color":color});
+      marker.attr("id", u).css({"left":newTop-1+"%","top":left+4+"%","background-color":color});
     }
         //give each post its unique identifier//
         tag.attr("name",u);
@@ -499,7 +521,8 @@ $(".question,.questions").click(function(){
         </div>
         <img class="question" style="display:inline;" src="quest.svg"/>
         <img class="questions" style="display:none;" src="close.svg"/>
-        <img src="floorplan_2.svg" class="floor"/>
+        <img src="floorplan_2.svg" class="floor" id="m"/>
+        <img src="floorplan_2_m.svg" class="floor" id="g"/>
         <p class="back">Back to plan view</p>
         
       </body>
