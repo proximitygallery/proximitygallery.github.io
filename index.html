@@ -90,6 +90,7 @@
         top: 4.5vh;
         font-size: 16px;
         font-family: sans-serif;
+        color: white;
       }
 
       .big {
@@ -109,6 +110,7 @@
         top: 20%;
         width: 14vw;
         font-size: 16px;
+        color: white;
       }
 
       .q {
@@ -355,7 +357,7 @@ if ($(window).width() > 738) {
         setTimeout(function(){
       $(".back").fadeIn(200);
     },250);
-        $(".floor").hide();
+        $(".floor,.question,.questions").hide();
         $(this).addClass("big");
         var self = $(this).attr("id");
         $(".walltag[name="+self+"]").show();
@@ -367,7 +369,7 @@ if ($(window).width() > 738) {
         $(".slider").removeClass("top");
         $(".back,.walltag").hide();
         $(".view").removeClass("focus");
-        $(".floor,.marker").show();
+        $(".floor,.marker,.question").show();
         $(".marker").removeClass("big");
       });
 } else {
