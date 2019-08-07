@@ -199,8 +199,8 @@
         filter: blur(4px);
       }
 
-      #g {
-        display: none !important;
+      .floors {
+        display: none;
       }
 
       @media screen and (max-width: 736px){
@@ -209,7 +209,7 @@
         }
 
         #g {
-          display: inline-block;
+          display: inline;
           position: absolute;
           height: 100%;
           width: auto;
@@ -232,6 +232,11 @@
         }
 
         .floor {
+          display: none;
+        }
+
+        .floors {
+          display: inline;
           top: 0% !important;
           position: absolute;
           height: 90%;
@@ -442,7 +447,7 @@ if ($(window).width() > 738) {
         setTimeout(function(){
       $(".back").fadeIn(200);
     },250);
-        $(".floor").hide();
+        $(".floors").hide();
         $(this).addClass("big");
         var self = $(this).attr("id");
         $(".walltag[name="+self+"]").show();
@@ -454,7 +459,7 @@ if ($(window).width() > 738) {
         $(".slider").removeClass("top");
         $(".back,.walltag").hide();
         $(".view").removeClass("focus");
-        $(".floor,.marker").show();
+        $(".floors,.marker").show();
         $(".marker").removeClass("big");
       });
 }
@@ -493,7 +498,7 @@ $(".question,.questions").click(function(){
     });
 
   $(".hours").show();
-  $(".floor").addClass("blur");
+  $(".floors,.floor").addClass("blur");
 
 
 }
@@ -526,7 +531,7 @@ $(".question,.questions").click(function(){
         <img class="question" style="display:inline;" src="quest.svg"/>
         <img class="questions" style="display:none;" src="close.svg"/>
         <img src="floorplan_2.svg" class="floor" id="m"/>
-        <img src="floorplan_2_m.svg" class="floor" id="g"/>
+        <img src="floorplan_2_m.svg" class="floors" id="g" id="bg"/>
         <p class="back">Back to plan view</p>
         
       </body>
