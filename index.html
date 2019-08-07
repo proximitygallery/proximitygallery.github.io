@@ -211,9 +211,9 @@
         #g {
           display: inline-block;
           position: absolute;
-          height: 90%;
+          height: 100%;
           width: auto;
-          top: 8%;
+          top: 0%;
         }
 
         html {
@@ -232,7 +232,7 @@
         }
 
         .floor {
-          top: 10% !important;
+          top: 0% !important;
           position: absolute;
           height: 90%;
           left: 49%;
@@ -292,13 +292,17 @@
         .question,.questions {
           /*z-index: -99;*/
           position: absolute;
-          top: 3% !important;
-          left: 50%;
+          top: 1.5% !important;
+          left: 3%;
           width: 30px;
           height: auto;
-          transform:translate(-50%,0%);
-        -webkit-transform:translate(-50%,0%);
+          transform:translate(0%,0%);
+        -webkit-transform:translate(0%,0%);
 
+        }
+
+        .slider {
+          height: 100%;
         }
 
         .slider > p,.hours {
@@ -421,7 +425,7 @@ if ($(window).width() > 738) {
         if (window.innerHeight === window.screen.height && navigator.userAgent.match(/instagram/i)) {
       marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","background-color":color});
     } else {
-      marker.attr("id", u).css({"left":newTop-1+"%","top":left+4+"%","background-color":color});
+      marker.attr("id", u).css({"left":newTop-1+"%","top":left+"%","background-color":color});
     }
         //give each post its unique identifier//
         tag.attr("name",u);
