@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 72 72" style="enable-background:new 0 0 72 72;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#595A5A;}
-</style>
-<rect x="32.15" y="2.52" transform="matrix(0.7071 0.7071 -0.7071 0.7071 35.7776 -15.6785)" class="st0" width="9.34" height="65.66"/>
-<rect x="32.15" y="2.52" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -14.2122 36.385)" class="st0" width="9.34" height="65.66"/>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+	 width="1080px" height="1350px" viewBox="0 0 1080 1350" enable-background="new 0 0 1080 1350" xml:space="preserve">
+<line fill="none" stroke="#000000" stroke-width="30" stroke-miterlimit="10" x1="161.36" y1="293.36" x2="909.072" y2="1041.072"/>
+<line fill="none" stroke="#000000" stroke-width="30" stroke-miterlimit="10" x1="909.072" y1="293.36" x2="161.359" y2="1041.072"/>
 </svg>
