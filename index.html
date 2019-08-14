@@ -118,15 +118,17 @@ html {
 }
 
 .marker {
+  background-color: transparent;
+  border: 2px solid;
   cursor: pointer;
   position: absolute !important;
   width: 20px;
   height: 20px;
   border-radius: 50vw;
-  -webkit-transition: all .4s cubic-bezier(0,.94,.44,1);
-  -moz-transition: all .4s cubic-bezier(0,.94,.44,1);
-  -o-transition: all .4s cubic-bezier(0,.94,.44,1);
-  transition: all .4s cubic-bezier(0,.94,.44,1);
+  -webkit-transition: all 1s cubic-bezier(0,.94,.44,1);
+  -moz-transition: all 1s cubic-bezier(0,.94,.44,1);
+  -o-transition: all 1s cubic-bezier(0,.94,.44,1);
+  transition: all 1s cubic-bezier(0,.94,.44,1);
 
 }
 
@@ -576,7 +578,7 @@ if (today >= 8 && today <= 22) {
                               var view = $("<img class='view'/>").attr("src",src);
                               var marker = $("<div class='marker'></div>");
                               //create and position marker//
-                              marker.attr("id", u).css({"top":tops+"%","left":left+"%","background-color":color});
+                              marker.attr("id", u).css({"top":tops+"%","left":left+"%","border-color":color});
                               //give each post its unique identifier//
                               tag.attr("name",u);
                               view.attr("name",u);
@@ -656,9 +658,9 @@ if (today >= 8 && today <= 22) {
                               var marker = $("<div class='marker'></div>");
                               //create and position marker//
                               if (window.innerHeight === window.screen.height && navigator.userAgent.match(/instagram/i)) {
-                                marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","background-color":color});
+                                marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","border-color":color});
                               } else {
-                                marker.attr("id", u).css({"left":newTop-3.5+"%","top":left-3+"%","background-color":color});
+                                marker.attr("id", u).css({"left":newTop-3.5+"%","top":left-3+"%","border-color":color});
                               }
                               //give each post its unique identifier//
                               tag.attr("name",u);
