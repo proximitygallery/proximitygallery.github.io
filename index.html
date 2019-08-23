@@ -288,6 +288,7 @@ color: #635d00;
 }
 
 .hours {
+  color: white;
 position: relative;
 left: 2%;
 top: 50%;
@@ -470,6 +471,9 @@ width: 80vw;
 
 .hours {
 top: 41% !important;
+color: white;
+left: 20vw;
+width: 60vw;
 }
 
 .past > .block-img > img {
@@ -555,7 +559,7 @@ var body = $("body");
 // start "open" //
 
 var today = new Date().getHours();
-if (today >= 8 && today <= 22) {
+if (today >= 12 && today <= 22) {
 
 
 
@@ -734,6 +738,8 @@ $(".question").show();
 $(".questions").addClass("yes").show();
 $(".question").hide();
 }
+$(".hours").show();
+$(".floors,.floor").addClass("blur");
 });
 
 $(".hours").show();
@@ -752,7 +758,7 @@ $(".floors,.floor").addClass("blur");
 
 <body>
 <!-- <input type="file" accept="image/*" capture="camera"> -->
-<div class="hours" style="display:none">proximity is currently closed.<br><br>Hours are 8 AM to 10 PM,<br>Monday - Sunday.</div>
+<div class="hours" style="display:none">proximity is currently closed due to show installation and/or maintenance. The show will be up soon!<br><br>Hours are 8 AM to 10 PM,<br>Monday - Sunday.</div>
 <div class="slider">
 
 <p>
