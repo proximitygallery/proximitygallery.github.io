@@ -310,19 +310,35 @@ filter: blur(4px);
 display: none;
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1320px){
+
+html {
+overflow: scroll;
+}
+
 .focus {
 margin: 0;
 position: relative;
 float: top;
 display: inline-block;
 height: 60vh;
-margin-top: 30vh !important;
+margin-top: 20vh !important;
+margin-bottom: 20vh;
 left: 1%;
 }
 
+.walltag {
+  margin-left: 0;
+  left: 1%;
+}
+
 .walltag > p {
-width: 60vw !important;
+position: relative;
+width: 50vw !important;
+}
+
+.walltag {
+  position: relative;
 }
 
 }
@@ -413,7 +429,8 @@ color: white;
 position: relative;
 margin-right: 0;
 margin-left: 0;
-margin-top: 35% !important;
+margin-top: 25% !important;
+margin-bottom: 25%;
 left: 0% !important;
 width: 100% !important;
 height: auto !important;
@@ -559,7 +576,7 @@ var body = $("body");
 // start "open" //
 
 var today = new Date().getHours();
-if (today >= 8 && today <= 12) {
+if (today >= 8 && today <= 22) {
 
 
 
@@ -663,9 +680,9 @@ image = results[i].getImage("marker.view").asHtml();
               var marker = $("<div class='marker'></div>");
               //create and position marker//
               if (window.innerHeight === window.screen.height && navigator.userAgent.match(/instagram/i)) {
-                marker.attr("id", u).css({"top":newInstaTop+"%","left":left+"%","border-color":color});
+                marker.attr("id", u).css({"bottom":newInstaTop+"%","left":left+"%","border-color":color});
               } else {
-                marker.attr("id", u).css({"left":newTop-3.5+"%","top":left-3+"%","border-color":color});
+                marker.attr("id", u).css({"left":newTop-3.5+"%","bottom":left+"%","border-color":color});
               }
               //give each post its unique identifier//
               tag.attr("name",u);
